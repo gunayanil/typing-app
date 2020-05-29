@@ -6,22 +6,25 @@ import {
   StyledCharacter,
 } from '../styled/Game';
 import { Strong } from '../styled/Misc';
+import { useScore } from '../context/ScoreContext';
 
 const Game = ({ history }) => {
   const MAX_SECONDS = 20;
   const characters = 'abcdefghijklmnoprstuvwxyz0123456789';
   const [currentChar, setCurrentChar] = useState('');
-  const [score, setScore] = useState(0);
+  const [score, setScore] = useScore(0);
   const [ms, setMs] = useState(0);
   const [seconds, setSeconds] = useState(MAX_SECONDS);
 
   useEffect(() => {
     setRandomChar();
+    setScore(0);
     const currentTime = new Date().getTime();
     const interval = setInterval(() => updateTime(currentTime), 1);
 
     return () => clearInterval(interval);
-  }, []);
+    // To do: check dependencies
+  }, [setScore]);
 
   const updateTime = startTime => {
     const endTime = new Date().getTime();
@@ -54,7 +57,7 @@ const Game = ({ history }) => {
       setRandomChar();
     },
     // To do: check dependecies
-    [currentChar, score]
+    [currentChar, score, setScore]
   );
 
   useEffect(() => {
