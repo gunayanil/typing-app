@@ -53,6 +53,7 @@ const Game = ({ history }) => {
       }
       setRandomChar();
     },
+    // To do: check dependecies
     [currentChar, score]
   );
 
