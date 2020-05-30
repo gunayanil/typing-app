@@ -5,11 +5,18 @@ import Game from './pages/Game';
 import HighScores from './pages/HighScores';
 import GameOver from './pages/GameOver';
 import Navbar from './components/Navbar';
+import { useAuth0 } from './auth';
 import { Container } from './styled/Container';
 import { Main } from './styled/Main';
 import Global from './styled/Global';
 
 function App() {
+  const { loading } = useAuth0();
+
+  if (loading) {
+    return <p>Loading...</p>;
+  }
+
   return (
     <Router>
       <Global />
