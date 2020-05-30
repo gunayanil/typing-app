@@ -8,7 +8,7 @@ import {
 } from '../styled/Navbar';
 import { useAuth0 } from '../auth';
 
-const Navbar = ({ toggleTheme }) => {
+const Navbar = ({ toggleTheme, theme }) => {
   const { isAuthenticated, loginWithRedirect, logout } = useAuth0();
 
   return (
@@ -33,7 +33,10 @@ const Navbar = ({ toggleTheme }) => {
             <button onClick={logout}>Logout</button>
           </li>
         )}
-        <button onClick={toggleTheme}>Toggle Theme</button>
+        <button onClick={toggleTheme}>
+          {' '}
+          {theme === 'dark' ? 'Light' : 'Dark'} Theme
+        </button>
       </StyledNavItems>
     </StyledNavbar>
   );
