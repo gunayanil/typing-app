@@ -26,7 +26,7 @@ function App() {
           {loading && <p>Loading</p>}
           {!loading && (
             <Container>
-              <Navbar toggleTheme={toggleTheme} />
+              <Navbar theme={theme} toggleTheme={toggleTheme} />
               <Switch>
                 <Route path='/game' component={Game} />
                 <Route path='/highscores' component={HighScores} />
