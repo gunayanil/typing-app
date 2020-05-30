@@ -1,12 +1,10 @@
 import { createGlobalStyle } from 'styled-components';
 
-const isDarkTheme = false;
-
 export default createGlobalStyle`
   :root {
-    --main-bg-color: ${isDarkTheme ? '#333' : '#f9f9f9'};
-    --main-text-color: ${isDarkTheme ? '#f9f9f9' : '#333'};
-    --accent-color: #e16365;
+    --main-bg-color: ${props => props.theme.mainBgColor};
+    --main-text-color: ${props => props.theme.mainTextColor};
+    --accent-color: ${props => props.theme.accent};
 
   }
   *{

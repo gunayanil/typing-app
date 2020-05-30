@@ -7,9 +7,11 @@ import {
   StyledLink,
 } from '../styled/Navbar';
 import { useAuth0 } from '../auth';
+import useTheme from '../hooks/UseTheme';
 
-const Navbar = () => {
+const Navbar = ({ toggleTheme }) => {
   const { isAuthenticated, loginWithRedirect, logout } = useAuth0();
+
   return (
     <StyledNavbar>
       <StyledNavBrand>
@@ -32,6 +34,7 @@ const Navbar = () => {
             <button onClick={logout}>Logout</button>
           </li>
         )}
+        <button onClick={toggleTheme}>Toggle Theme</button>
       </StyledNavItems>
     </StyledNavbar>
   );
