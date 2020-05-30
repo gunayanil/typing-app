@@ -7,7 +7,6 @@ import {
   StyledLink,
 } from '../styled/Navbar';
 import { useAuth0 } from '../auth';
-import useTheme from '../hooks/UseTheme';
 
 const Navbar = ({ toggleTheme }) => {
   const { isAuthenticated, loginWithRedirect, logout } = useAuth0();
