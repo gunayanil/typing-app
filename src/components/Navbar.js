@@ -6,8 +6,10 @@ import {
   StyledNavItems,
   StyledLink,
 } from '../styled/Navbar';
+import { useAuth0 } from '../auth';
 
 const Navbar = () => {
+  const { isAuthenticated, loginWithRedirect, logout } = useAuth0();
   return (
     <StyledNavbar>
       <StyledNavBrand>
@@ -20,6 +22,16 @@ const Navbar = () => {
         <li>
           <StyledLink to='/highscores'>High Scores</StyledLink>
         </li>
+        {!isAuthenticated && (
+          <li>
+            <button onClick={loginWithRedirect}>Login</button>
+          </li>
+        )}
+        {isAuthenticated && (
+          <li>
+            <button onClick={logout}>Logout</button>
+          </li>
+        )}
       </StyledNavItems>
     </StyledNavbar>
   );
