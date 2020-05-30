@@ -8,28 +8,27 @@ import Navbar from './components/Navbar';
 import { useAuth0 } from './auth';
 import { Container } from './styled/Container';
 import { Main } from './styled/Main';
-import Global from './styled/Global';
+import GlobalStyle from './styled/Global';
 
 function App() {
   const { loading } = useAuth0();
 
-  if (loading) {
-    return <p>Loading...</p>;
-  }
-
   return (
     <Router>
-      <Global />
+      <GlobalStyle />
       <Main>
-        <Container>
-          <Navbar />
-          <Switch>
-            <Route path='/game' component={Game} />
-            <Route path='/highscores' component={HighScores} />
-            <Route path='/gameover' component={GameOver} />
-            <Route path='/' component={Home} />
-          </Switch>
-        </Container>
+        {loading && <p>Loading</p>}
+        {!loading && (
+          <Container>
+            <Navbar />
+            <Switch>
+              <Route path='/game' component={Game} />
+              <Route path='/highscores' component={HighScores} />
+              <Route path='/gameover' component={GameOver} />
+              <Route path='/' component={Home} />
+            </Switch>
+          </Container>
+        )}
       </Main>
     </Router>
   );
