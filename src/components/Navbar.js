@@ -5,7 +5,9 @@ import {
   StyledNavBrand,
   StyledNavItems,
   StyledLink,
+  StyledButtonLink,
 } from '../styled/Navbar';
+import { StyledButton } from '../styled/Button';
 import { useAuth0 } from '../auth';
 
 const Navbar = ({ toggleTheme, theme }) => {
@@ -25,18 +27,20 @@ const Navbar = ({ toggleTheme, theme }) => {
         </li>
         {!isAuthenticated && (
           <li>
-            <button onClick={loginWithRedirect}>Login</button>
+            <StyledButtonLink onClick={loginWithRedirect}>
+              Login
+            </StyledButtonLink>
           </li>
         )}
         {isAuthenticated && (
           <li>
-            <button onClick={logout}>Logout</button>
+            <StyledButtonLink onClick={logout}>Logout</StyledButtonLink>
           </li>
         )}
-        <button onClick={toggleTheme}>
+        <StyledButton onClick={toggleTheme}>
           {' '}
           {theme === 'dark' ? 'Light' : 'Dark'} Theme
-        </button>
+        </StyledButton>
       </StyledNavItems>
     </StyledNavbar>
   );
