@@ -9,7 +9,7 @@ import { Strong } from '../styled/Misc';
 import { useScore } from '../context/ScoreContext';
 
 const Game = ({ history }) => {
-  const MAX_SECONDS = 20;
+  const MAX_SECONDS = 13;
   const characters = 'abcdefghijklmnoprstuvwxyz0123456789';
   const [currentChar, setCurrentChar] = useState('');
   const [score, setScore] = useScore(0);
@@ -21,10 +21,13 @@ const Game = ({ history }) => {
     setScore(0);
     const currentTime = new Date().getTime();
     const interval = setInterval(() => updateTime(currentTime), 1);
-
     return () => clearInterval(interval);
-    // To do: check dependencies
-  }, [setScore]);
+  }, []);
+
+  const setRandomChar = () => {
+    const randomInt = Math.floor(Math.random() * 35);
+    setCurrentChar(characters[randomInt]);
+  };
 
   const updateTime = startTime => {
     const endTime = new Date().getTime();
@@ -56,8 +59,7 @@ const Game = ({ history }) => {
       }
       setRandomChar();
     },
-    // To do: check dependecies
-    [currentChar, score, setScore]
+    [currentChar]
   );
 
   useEffect(() => {
@@ -66,11 +68,6 @@ const Game = ({ history }) => {
       document.removeEventListener('keyup', keyUpHandler);
     };
   }, [keyUpHandler]);
-
-  const setRandomChar = () => {
-    const randomInt = Math.floor(Math.random() * 36);
-    setCurrentChar(characters[randomInt]);
-  };
 
   return (
     <StyledGame>
