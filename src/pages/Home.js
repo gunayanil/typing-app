@@ -6,7 +6,7 @@ const Home = () => {
   return (
     <div>
       <StyledTitle>Ready to type?</StyledTitle>
-      <CTA to='/game'>Click or type 's' to start!</CTA>
+      <CTA to='/game'>Click here to start!</CTA>
     </div>
   );
 };
