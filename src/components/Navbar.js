@@ -16,7 +16,7 @@ const Navbar = ({ toggleTheme, theme }) => {
   return (
     <StyledNavbar>
       <StyledNavBrand>
-        <Link to='/'>Type!</Link>
+        <Link to='/'>Typing Game v1</Link>
       </StyledNavBrand>
       <StyledNavItems>
         <li>
